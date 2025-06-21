@@ -1,5 +1,5 @@
- httpscodeforces.comproblemsetproblem1829F
- dfs and similar graphs math 1300
+// https://codeforces.com/problemset/problem/1829/F
+// dfs and similar graphs math 1300
 
 
 
