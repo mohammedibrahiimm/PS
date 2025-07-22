@@ -1,0 +1,29 @@
+// https://leetcode.com/problems/ransom-note/description/
+// 383. Ransom Note
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        sort(ransomNote.begin(),ransomNote.end());
+        sort(magazine.begin(),magazine.end());
+        int l=0,l1=0;
+        while(l<ransomNote.size(),l1<magazine.size()){
+            if(ransomNote[l]==magazine[l1])
+                l++;
+            l1++;
+        }
+        return l==ransomNote.size();
+    }
+};
+
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        vector<int>v(26,0);
+        for(auto&it:magazine){v[it-'a']++;}
+        for(auto&it:ransomNote){
+            if(v[it-'a']>0){v[it-'a']--;}
+            else{return 0;}
+        }
+        return 1;
+    }
+};

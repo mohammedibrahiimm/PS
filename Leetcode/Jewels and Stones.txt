@@ -1,0 +1,14 @@
+// https://leetcode.com/problems/jewels-and-stones/description/
+// 771. Jewels and Stones
+class Solution {
+public:
+    int numJewelsInStones(string jewels, string stones) {
+        map<char,int>mp;
+        int ans=0;
+        for(auto&it:stones){mp[it]++;}
+        for(auto&it:jewels){
+            ans+=mp[it];
+        }
+        return ans;
+    }
+};

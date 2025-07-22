@@ -1,0 +1,17 @@
+// https://leetcode.com/problems/rotate-image/
+// 48. Rotate Image
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        vector<vector<int>>v1=matrix;
+        int n=v1.size();
+        for(int i=0;i<n;i++){
+            for(int j=0;j<i;j++){
+                swap(matrix[i][j],matrix[j][i]);
+            }
+        }
+        for(auto&it:matrix){
+            reverse(it.begin(),it.end());
+        }
+    }
+};

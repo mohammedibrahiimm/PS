@@ -1,0 +1,39 @@
+// https://leetcode.com/problems/contains-duplicate/
+// 217. Contains Duplicate
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        set<int>st;
+        for(auto&it:nums){
+            st.insert(it);
+        }
+        return (st.size()!=nums.size());
+    }
+};
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        for(int i=0;i<nums.size()-1;i++){
+            if(nums[i]==nums[i+1]){
+                return 1;
+            }
+        }
+        return 0;
+    }
+};
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        set<int>st;
+        for(auto&it:nums){
+            if(st.find(it)!=st.end())
+                return 1;
+            st.insert(it);
+        }
+        return 0;
+    }
+};
+

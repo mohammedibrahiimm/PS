@@ -1,0 +1,36 @@
+// https://leetcode.com/problems/two-sum/
+// 1. Two Sum
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<pair<int,int>>v1;
+        for(int i=0;i<nums.size();i++){
+            v1.push_back({nums[i],i});
+        }
+        sort(v1.begin(),v1.end());
+        int l=0,r=nums.size()-1;
+        while(l<r){
+            if(v1[l].first+v1[r].first==target)
+                return {v1[l].second,v1[r].second};
+            if(v1[l].first+v1[r].first>target)
+                r--;
+            else
+                l++;
+        }
+        return {0,0};
+    }
+};
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        map<int,int>mp;
+        for(int i=0;i<nums.size();i++){
+            if(mp.count(target-nums[i])!=0){
+                return {mp[target-nums[i]],i}; 
+            }
+            mp[nums[i]]=i;
+        }
+        return {0,0};
+    }
+};

@@ -1,0 +1,18 @@
+// https://leetcode.com/problems/majority-element/
+// 169. Majority Element
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        map<int,int>mp;
+        for(auto&it:nums){
+            mp[it]++;
+        }
+        int need=(nums.size()>>1);
+        for(auto&it:mp){
+            if(it.second>need){
+                return it.first;
+            }
+        }
+        return 0;
+    }
+};
