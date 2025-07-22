@@ -1,4 +1,4 @@
-// https://cses.fi/problemset/task/1083/
+// https://cses.fi/problemset/task/1083
 // Missing Number
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
@@ -16,7 +16,7 @@ typedef  long double ld;
 typedef  unsigned long long ull;
 #define ull unsigned long long
 #define TxtIO   freopen("input.txt","r",stdin); freopen("output.txt","w",stdout);
-const int MOD=1e9+7,M=1e6+5;
+const int MOD=1e9+7,M=1e5+5;
 //const ll inf=1e16;
 ll mul(ll a,ll b){return (1ll*a*b)%MOD;}
 int sub(ll a,ll b){return ((a-b)%MOD+MOD)%MOD;}
@@ -31,8 +31,8 @@ ll fp(int n,int p){if(!p){return 1;}ll rem=fp(n,p>>1);rem*=rem;if(p&1){rem*=n;}r
 //int ncr(int n, int r) {return mul(fact[n], mul(inv[n - r], inv[r]));}
 //void precompute() {fact[0] = inv[0] = 1;for (int i = 1; i <=M; ++i) {fact[i] = mul(fact[i - 1], i);inv[i] = power(fact[i], MOD - 2);}}
 // 3d
-int dx[]={1,-1,0,0,0,0};
-int dy[]={0,0,1,-1,0,0};
+//int dx[]={1,-1,0,0,0,0};
+//int dy[]={0,0,1,-1,0,0};
 //int dz[]={0,0,0,0,1,-1};
 
 // 2d
@@ -50,17 +50,21 @@ int main(){
 	int t=1;
 //	cin >> t;
 	while (t--) {
-		int n,q,m;
-		cin>>n>>q;
-		vector<ll>sum(n+1,0);
-		for(int i=0;i<n;i++){
-			cin>>m;
-			sum[i+1]=(sum[i]+m);
+		int n;
+		cin>>n;
+		vector<int>v(n-1);
+		for(auto&it:v){cin>>it;}
+		sort(all(v));
+		if(v[0]!=1){
+			cout<<1;
+			return 0;
 		}
-		while(q--){
-			int l,r;
-			cin>>l>>r;
-			cout<<sum[r]-sum[l-1]<<N;
+		for(int i=1;i<n;i++){
+			if(v[i]-i!=1){
+				cout<<i+1;
+				return 0;
+			}
 		}
+		cout<<n;
 	}
 }

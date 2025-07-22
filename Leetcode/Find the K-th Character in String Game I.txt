@@ -1,0 +1,17 @@
+// https://leetcode.com/problems/find-the-k-th-character-in-string-game-i/description/?envType=daily-question&envId=2025-07-03
+// 3304. Find the K-th Character in String Game I
+class Solution {
+public:
+    char kthCharacter(int k) {
+        string s="a";
+        while(s.size()<500){
+            string tmp=s;
+            for(auto&it:tmp){
+                if(it!='z'){it++;}
+                else{it='a';}
+            }
+            s+=tmp;
+        }
+        return s[k-1];
+    }
+};
