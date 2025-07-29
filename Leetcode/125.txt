@@ -1,0 +1,20 @@
+// https://leetcode.com/problems/valid-palindrome/
+// 125. Valid Palindrome
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        string tmp="";
+        for(auto&it:s){
+            if((tolower(it)>='a'&&tolower(it)<='z')||(it>='0'&&it<='9')){
+                tmp+=tolower(it);
+            }
+        }
+        int l=0,r=tmp.size()-1;
+        while(l<r){
+            if(tmp[l]!=tmp[r]){return 0;}
+            l++;
+            r--;
+        }
+        return 1;
+    }
+};

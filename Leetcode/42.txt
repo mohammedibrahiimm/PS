@@ -1,0 +1,24 @@
+// https://leetcode.com/problems/trapping-rain-water/
+// 42. Trapping Rain Water
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int l=0,r=height.size()-1;
+        int left_max=height[l];
+        int right_max=height[r];
+        int sum=0;
+        while(l<r){
+            if(left_max<=right_max){
+                sum+=left_max-height[l];
+                l++;
+                left_max=max(left_max,height[l]);
+            }
+            else{
+                sum+=right_max-height[r];
+                r--;
+                right_max=max(right_max,height[r]);
+            }
+        }
+        return sum;
+    }
+};
