@@ -1,0 +1,33 @@
+// https://leetcode.com/problems/baseball-game/
+// 682. Baseball Game
+class Solution {
+public:
+    int calPoints(vector<string>& operations) {
+        stack<int>st;
+        for(auto&it:operations){
+            if(it!="+"&&it!="D"&&it!="C"){
+                st.push(stoi(it));
+            }
+            else if(it=="+"&&st.size()>1){
+                int nw=st.top();
+                st.pop();
+                int nw2=st.top();
+                st.push(nw);
+                st.push(nw2+nw);
+            }
+            else if(it=="D"&&!st.empty()){
+                int nw=st.top();
+                st.push(nw*2);
+            }
+            else if(it=="C"&&!st.empty()){
+                st.pop();
+            }
+        }
+        int ans=0;
+        while(!st.empty()){
+            ans+=st.top();
+            st.pop();
+        }
+        return ans;
+    }
+};
