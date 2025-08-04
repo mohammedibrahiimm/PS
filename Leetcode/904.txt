@@ -1,0 +1,23 @@
+// https://leetcode.com/problems/fruit-into-baskets/description/?envType=daily-question&envId=2025-08-04
+// 904. Fruit Into Baskets
+class Solution {
+public:
+    int totalFruit(vector<int>& fruits) {
+        int l=0,r=0,ans=-1;
+        map<int,int>mp;
+        for(;r<fruits.size();){
+            mp[fruits[r]]++;
+            cout<<r<<" "<<l<<"\n";
+            while(mp.size()>2){
+                mp[fruits[l]]--;
+                if(mp[fruits[l]]==0){
+                    mp.erase(fruits[l]);
+                }
+                l++;
+            }
+            r++;
+            ans=max(ans,r-l);
+        }
+        return ans;
+    }
+};
