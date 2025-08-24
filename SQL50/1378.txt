@@ -1,0 +1,4 @@
+-- https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier/?envType=study-plan-v2&envId=top-sql-50
+-- 1378. Replace Employee ID With The Unique Identifier
+select unique_id,name
+from employeeuni right join employees on employees.id=employeeuni.id

@@ -1,0 +1,4 @@
+-- https://leetcode.com/problems/product-sales-analysis-i/?envType=study-plan-v2&envId=top-sql-50
+-- 1068. Product Sales Analysis I
+select product_name,year,price
+from product join sales on product.product_id=sales.product_id
