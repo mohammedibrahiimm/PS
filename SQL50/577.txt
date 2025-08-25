@@ -1,0 +1,6 @@
+-- https://leetcode.com/problems/employee-bonus/?envType=study-plan-v2&envId=top-sql-50
+-- 577. Employee Bonus
+select name,bonus from Employee 
+left outer join Bonus 
+ON Employee.empId = Bonus.empId
+where Bonus.bonus<1000 or Bonus.bonus is null
