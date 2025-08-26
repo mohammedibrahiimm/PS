@@ -1,0 +1,14 @@
+-- https://leetcode.com/problems/managers-with-at-least-5-direct-reports/?envType=study-plan-v2&envId=top-sql-50
+-- 570. Managers with at Least 5 Direct Reports
+select name from employee
+where id in(select managerId from employee group by managerId having count(managerId)>=5)
+
+
+or 
+
+# Write your MySQL query statement below
+select e1.name
+from Employee e1,Employee e2
+where e2.managerId=e1.id
+group by e2.managerId
+having count(e1.id)>=5
