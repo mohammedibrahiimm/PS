@@ -1,0 +1,8 @@
+-- https://leetcode.com/problems/the-number-of-employees-which-report-to-each-employee/?envType=study-plan-v2&envId=top-sql-50
+-- 1731. The Number of Employees Which Report to Each Employee
+select e.employee_id,e.name,count(e.employee_id) as reports_count,round(avg(e1.age)) as average_age 
+from Employees e
+join Employees e1
+on e.employee_id = e1.reports_to
+group by employee_id
+order by employee_id
