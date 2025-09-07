@@ -1,0 +1,23 @@
+// https://leetcode.com/problems/longest-unequal-adjacent-groups-subsequence-i/?envType=daily-question&envId=2025-09-07
+// 2900. Longest Unequal Adjacent Groups Subsequence I
+class Solution {
+public:
+    vector<string> getLongestSubsequence(vector<string>& words, vector<int>& groups) {
+        vector<string>ans,ans1;
+        int nw=0;
+        for(int i=0;i<words.size();i++){
+            if(groups[i]==nw){
+                ans.push_back(words[i]);
+                nw^=1;
+            }
+        }
+        nw=1;
+        for(int i=0;i<words.size();i++){
+            if(groups[i]==nw){
+                ans1.push_back(words[i]);
+                nw^=1;
+            }
+        }
+        return (ans.size()>=ans1.size()?ans:ans1);
+    }
+};
