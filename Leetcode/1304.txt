@@ -1,0 +1,17 @@
+-- https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/?envType=daily-question&envId=2025-09-07
+-- 1304. Find N Unique Integers Sum up to Zero
+class Solution {
+public:
+    vector<int> sumZero(int n) {
+        int num=1000;
+        vector<int>ans;
+        while(n>1){
+            ans.push_back(num);
+            ans.push_back(-num);
+            n-=2;
+            num--;
+        }
+        if(n){ans.push_back(0);}
+        return ans;
+    }
+};
