@@ -1,0 +1,8 @@
+-- https://leetcode.com/problems/delete-duplicate-emails/?envType=study-plan-v2&envId=top-sql-50
+-- 196. Delete Duplicate Emails
+delete from Person where id in(
+    select id from(
+        select *,row_number() over(partition by email order by id) as rn from Person 
+    ) as newtable
+    where rn>1
+)

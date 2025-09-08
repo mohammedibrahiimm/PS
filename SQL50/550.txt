@@ -1,0 +1,8 @@
+-- https://leetcode.com/problems/game-play-analysis-iv/?envType=study-plan-v2&envId=top-sql-50
+-- 550. Game Play Analysis IV
+SELECT 
+    ROUND(COUNT(DISTINCT t1.player_id) / (SELECT COUNT(DISTINCT player_id) FROM Activity), 2) AS fraction
+FROM (SELECT *, DENSE_RANK() OVER (PARTITION BY player_id ORDER BY event_date ASC) AS dr FROM Activity) AS newtable
+JOIN (SELECT *, DENSE_RANK() OVER (PARTITION BY player_id ORDER BY event_date ASC) AS dr FROM Activity) AS t1
+ON t1.player_id = newtable.player_id
+WHERE t1.dr = 1 AND newtable.dr = 2 AND DATEDIFF(newtable.event_date, t1.event_date) = 1;

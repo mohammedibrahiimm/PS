@@ -1,0 +1,7 @@
+-- https://leetcode.com/problems/department-top-three-salaries/?envType=study-plan-v2&envId=top-sql-50
+-- 185. Department Top Three Salaries
+select department.name as Department,newtable.name as Employee,salary from (
+    select *,dense_rank() over(partition by departmentId order by salary desc) as rn from employee
+) as newtable
+inner join Department on Department.id=newtable.departmentId
+where rn<=3
