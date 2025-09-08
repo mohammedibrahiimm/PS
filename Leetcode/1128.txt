@@ -1,0 +1,23 @@
+// https://leetcode.com/problems/number-of-equivalent-domino-pairs/?envType=daily-question&envId=2025-09-07
+// 1128. Number of Equivalent Domino Pairs
+class Solution {
+public:
+    int numEquivDominoPairs(vector<vector<int>>& dominoes) {
+        map<pair<int,int>,int>mp;
+        for(auto&it:dominoes){
+            if(mp.count({it[1],it[0]})){
+                mp[{it[1],it[0]}]++;
+            }
+            else{
+                mp[{it[0],it[1]}]++;
+            }
+        }
+        int ans=0;
+        for(auto&it:mp){
+            if(it.second>1){
+                ans+=(it.second*(it.second-1))/2;
+            }
+        }
+        return ans;
+    }
+};
