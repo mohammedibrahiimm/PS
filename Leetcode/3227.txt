@@ -1,0 +1,14 @@
+// https://leetcode.com/problems/vowels-game-in-a-string/submissions/1768344904/?envType=daily-question&envId=2025-09-07
+// 3227. Vowels Game in a String
+class Solution {
+public:
+    bool doesAliceWin(string s) {
+        int cnt=0;
+        for(auto&it:s){
+            if(it=='a'||it=='e'||it=='i'||it=='o'||it=='u'){
+                cnt++;
+            }
+        }
+        return cnt!=0;
+    }
+};
