@@ -1,0 +1,23 @@
+// https://leetcode.com/problems/find-most-frequent-vowel-and-consonant/description/?envType=daily-question&envId=2025-09-07
+// 3541. Find Most Frequent Vowel and Consonant
+class Solution {
+public:
+    int maxFreqSum(string s) {
+        vector<int>v(26,0);
+        for(auto&it:s){
+            v[it-'a']++;
+        }
+        string vowel="aeiou";
+        int mxVowel=0;
+        for(auto&it:vowel){
+            mxVowel=max(mxVowel,v[it-'a']);
+        }
+        int mx=0;
+        for(int i=1;i<26;i++){
+            if(i!=('e'-'a')&&i!=('i'-'a')&&i!=('o'-'a')&&i!=('u'-'a')){
+                mx=max(mx,v[i]);
+            }
+        }
+        return mx+mxVowel;
+    }
+};
