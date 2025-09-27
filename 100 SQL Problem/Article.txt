@@ -1,0 +1,10 @@
+-- https://www.naukri.com/code360/problems/article_2181187?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=avg_time&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&page=1
+-- Article
+select distinct v1.viewer_id as id from Views v1
+join Views v2 on 
+v1.viewer_id=v2.viewer_id and
+v1.view_date=v2.view_date and 
+v1.article_id != v2.article_id
+group by v1.viewer_id
+having count(v1.viewer_id)>1
+order by id

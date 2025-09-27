@@ -1,0 +1,6 @@
+// https://www.naukri.com/code360/problems/testingg-sql_1755903?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM
+//  IMDb Rating
+select title,rating from IMDb 
+join genre on IMDb.movie_id = genre.movie_id
+where title like '%(2014)'
+ and genre like 'C%' and budget > 40000000

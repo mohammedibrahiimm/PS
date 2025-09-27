@@ -1,0 +1,5 @@
+-- https://www.naukri.com/code360/problems/warehouse-manager_2181185?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=avg_time&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&page=1
+-- Warehouse Manager
+select name as warehouse_name,sum(units*length*width*height) as volume from Warehouse wh
+join Products pr on wh.product_id = pr.product_id
+group by name

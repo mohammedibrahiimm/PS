@@ -1,0 +1,4 @@
+-- https://www.naukri.com/code360/problems/recyclable-and-low-fat-products_2181186?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=avg_time&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&page=1
+-- Recyclable and Low Fat Products
+select product_id from Products 
+where low_fats='Y' and recyclable='Y'

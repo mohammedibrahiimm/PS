@@ -1,0 +1,4 @@
+-- https://www.naukri.com/code360/problems/swap-salary_2110762?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&page=1&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav
+-- Swap Salary
+update Salary
+set sex=(case when sex='f' then 'm' else 'f' end)
