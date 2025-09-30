@@ -1,0 +1,7 @@
+-- https://www.naukri.com/code360/problems/count-student-number-in-departments_2119332?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=1
+-- Count Student Number in Departments
+select dept_name,count(student_id) as student_number from department 
+left join student
+on department.dept_id=student.dept_id
+group by dept_name
+order by student_number desc,dept_name

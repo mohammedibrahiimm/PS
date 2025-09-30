@@ -1,0 +1,4 @@
+-- https://www.naukri.com/code360/problems/patients-with-a-condition_2196163?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=avg_time&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav
+-- Patients With a Condition
+select * from Patients
+where conditions like '%DIAB1%'

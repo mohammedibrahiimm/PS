@@ -1,0 +1,5 @@
+-- https://www.naukri.com/code360/problems/consecutive-numbers_2119328?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&page=1&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard
+-- Consecutive Numbers
+select distinct l1.num as ConsecutiveNums from logs l1
+join logs l2 on l2.id-1=l1.id and l2.num=l1.num
+join logs l3 on l3.id-1=l2.id and l3.num=l2.num

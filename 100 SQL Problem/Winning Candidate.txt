@@ -1,0 +1,7 @@
+-- https://www.naukri.com/code360/problems/winning-candidate_2119331?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard
+-- Winning Candidate
+select Name as "Name" from Candidate
+join Vote on Candidate.id=Vote.CandidateId
+group by Name
+order by count(*) desc
+limit 1

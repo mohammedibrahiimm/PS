@@ -1,0 +1,7 @@
+-- https://www.naukri.com/code360/problems/ad-free-sessions_2191517?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=avg_time&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav
+-- Ad-Free Sessions
+select session_id from Playback where session_id not in(
+select distinct session_id from Playback p
+join ads a on
+p.customer_id = a.customer_id and timestamp between start_time and end_time
+)

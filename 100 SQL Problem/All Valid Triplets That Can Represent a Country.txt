@@ -1,0 +1,8 @@
+-- https://www.naukri.com/code360/problems/all-valid-triplets-that-can-represent-a-country_2196165?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=avg_time&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav
+-- All Valid Triplets That Can Represent a Country
+select SchoolA.student_name as member_A,SchoolB.student_name as member_B,SchoolC.student_name as member_c from SchoolA 
+join SchoolB 
+on SchoolA.student_id != SchoolB.student_id and SchoolA.student_name != SchoolB.student_name
+join SchoolC
+on SchoolA.student_id != Schoolc.student_id and SchoolA.student_name != Schoolc.student_name
+and Schoolc.student_id != SchoolB.student_id and Schoolc.student_name != SchoolB.student_name

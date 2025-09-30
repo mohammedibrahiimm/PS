@@ -1,0 +1,6 @@
+-- https://www.naukri.com/code360/problems/fix-product-name-format_2196164?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=avg_time&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav
+-- Fix the Issue
+SELECT LOWER(TRIM(product_name)) as product_name, TO_CHAR(sale_date, 'YYYY-MM') as sale_date,count(*) as total
+FROM sales
+group by LOWER(TRIM(product_name)) , TO_CHAR(sale_date, 'YYYY-MM')
+order by product_name asc,sale_date asc
