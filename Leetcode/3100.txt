@@ -1,0 +1,19 @@
+// https://leetcode.com/problems/water-bottles-ii/?envType=daily-question&envId=2025-10-02
+// 3100. Water Bottles II
+class Solution {
+public:
+    int maxBottlesDrunk(int numBottles, int numExchange) {
+        int ans=0;
+        while(numBottles){
+            if(numBottles>=numExchange){
+                ans+=numExchange;
+                numBottles-=numExchange-1;
+                numExchange++;
+            }
+            else{
+                break;
+            }
+        }        
+        return ans+numBottles;
+    }
+};
