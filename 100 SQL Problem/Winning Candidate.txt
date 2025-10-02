@@ -5,3 +5,4 @@ join Vote on Candidate.id=Vote.CandidateId
 group by Name
 order by count(*) desc
 limit 1
+

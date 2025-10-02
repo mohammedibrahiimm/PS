@@ -1,0 +1,6 @@
+-- https://www.naukri.com/code360/problems/second-degree-follower_2119337?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=1
+-- Second Degree Follower
+select f2.follower,count(*) as num from follow f1
+join follow f2 on f1.followee=f2.follower
+group by f2.follower
+order by f2.follower

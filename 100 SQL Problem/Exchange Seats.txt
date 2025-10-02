@@ -1,0 +1,8 @@
+-- https://www.naukri.com/code360/problems/exchange-seats_2119336?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=1
+-- Exchange Seats
+select (
+    case when id%2=1 and id=(select count(*) from seat) then id 
+    when id%2=1 then id+1
+    else id-1 end
+    ) as id, student from seat
+    order by id

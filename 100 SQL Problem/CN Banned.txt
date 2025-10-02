@@ -1,0 +1,4 @@
+-- https://www.naukri.com/code360/problems/leetflex-banned-accounts_2181137?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=1
+-- CN Banned
+select distinct log1.account_id from LogInfo log1
+join LogInfo log2 on log1.login<=log2.login and log1.logout>=log2.login and log1.ip_address != log2.ip_address and log1.account_id =log2.account_id

@@ -1,0 +1,5 @@
+-- https://www.naukri.com/code360/problems/number-of-calls-between-two-persons_2181135?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=1
+-- Number of Calls Between Two Persons
+select LEAST(from_id,to_id) as person1,greatest(from_id,to_id) as person2,count(*) as call_count, sum(duration) as total_duration 
+from Calls
+group by person1,person2

@@ -1,0 +1,10 @@
+-- https://www.naukri.com/code360/problems/maximum-transaction-each-day_2181142?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=1
+-- Maximum Transaction Each Day
+with new as(
+    select date(day) as vis_date,max(amount) as max_amount from Transactions
+    group by date(day)
+)
+select transaction_id from Transactions t1
+join new n1
+on date(t1.day)=n1.vis_date and t1.amount=n1.max_amount
+order by transaction_id

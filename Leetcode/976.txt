@@ -1,0 +1,14 @@
+// https://leetcode.com/problems/largest-perimeter-triangle/?envType=daily-question&envId=2025-10-01
+// 976. Largest Perimeter Triangle
+class Solution {
+public:
+    int largestPerimeter(vector<int>& nums) {
+        sort(nums.rbegin(),nums.rend());
+        for(int i=0;i<nums.size()-2;i++){
+            if(nums[i]+nums[i+1]>nums[i+2]&&nums[i]+nums[i+2]>nums[i+1]&&nums[i+2]+nums[i+1]>nums[i]){
+                return nums[i]+nums[i+1]+nums[i+2];
+            }
+        }
+        return 0;
+    }
+};
