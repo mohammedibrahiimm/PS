@@ -1,0 +1,29 @@
+-- https://www.naukri.com/code360/problems/department-top-three-salaries_2181182?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard
+-- Department Top Three Salaries
+WITH AA AS
+(SELECT 
+EMP.Id,
+EMP.Name AS Employee,
+DPT.Name AS Department,
+EMP.Salary AS Salary,
+DENSE_RANK() OVER(PARTITION BY DPT.Name ORDER BY EMP.Salary DESC) AS Ranked
+FROM Employee EMP
+    JOIN Department DPT
+        ON EMP.DepartmentId = DPT.Id)
+SELECT 
+    Department AS "Department",Employee AS "Employee",Salary
+FROM AA
+WHERE Ranked <= 3
+ORDER BY Id;
+
+
+or 
+
+select d.Name AS "Department", e.Name AS "Employee", e.Salary
+from 
+Employee e 
+join Department d 
+on d.Id=e.DepartmentId where 3>(
+    select count(distinct e1.salary) 
+    from Employee e1 
+    where e1.salary>e.salary and e1.DepartmentId=e.DepartmentId

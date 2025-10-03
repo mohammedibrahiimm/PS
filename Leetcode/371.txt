@@ -1,0 +1,19 @@
+// https://leetcode.com/problems/sum-of-two-integers/
+// 371. Sum of Two Integers
+class Solution {
+public:
+    int getSum(int a, int b) {
+        std::bitset<32> bs(a), bs1(b), result;
+        int carry = 0;
+
+        for (int i = 0; i < 32; i++) {
+            int x = bs[i];
+            int y = bs1[i];
+            int sum = x ^ y ^ carry;
+            carry = (x & y) | (x & carry) | (y & carry);
+            result[i] = sum;
+        }
+
+        return result.to_ullong();
+    }
+};
