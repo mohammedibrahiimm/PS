@@ -1,0 +1,9 @@
+-- https://www.naukri.com/code360/problems/consecutive-available-seats_2111953?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=1
+-- Consecutive Available Seats
+with tmp as(
+    SELECT seat_id,free,
+    ROW_NUMBER() OVER (ORDER BY seat_id) AS row_number
+    FROM cinema 
+)
+select t1.seat_id from tmp t1
+join tmp t2 on t1.row_number+1=t2.row_number and t1.free='t' and t2.free='t'

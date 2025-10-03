@@ -1,0 +1,7 @@
+-- https://www.naukri.com/code360/problems/customer-placing-the-largest-number-of-orders_2111951?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=1
+-- Customer Placing the Largest Number Orders
+select customer_number
+from Orders 
+group by customer_number
+order by count(customer_number) desc
+limit 1

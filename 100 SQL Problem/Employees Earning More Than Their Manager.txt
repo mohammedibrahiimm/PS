@@ -1,0 +1,6 @@
+-- https://www.naukri.com/code360/problems/employees-earning-more-than-their-managers_2111944?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=1
+-- Employees Earning More Than Their Manager
+select e1.name as Employee
+from Employee e1
+join Employee e2
+on e1.ManagerId = e2.Id and e1.Salary>e2.Salary

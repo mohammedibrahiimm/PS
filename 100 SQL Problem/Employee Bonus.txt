@@ -1,0 +1,6 @@
+-- https://www.naukri.com/code360/problems/employee-bonus_2111949?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=1
+-- Employee Bonus
+select name,Bonus from employee
+left join Bonus 
+on Bonus.empid=employee.empid
+where Bonus<1000 or Bonus is null

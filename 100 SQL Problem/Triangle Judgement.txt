@@ -1,0 +1,9 @@
+-- https://www.naukri.com/code360/problems/triangle-judgement_2111954?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=1
+-- Triangle Judgement
+select x,y,z,
+    case when x+y>z and
+    x+z>y and 
+    y+z>x then
+    'Yes' else 'No' 
+    end as triangle
+from triangle
