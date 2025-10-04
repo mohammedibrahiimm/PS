@@ -1,0 +1,6 @@
+-- https://www.naukri.com/code360/problems/apples-oranges_2122060?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=2
+-- Apples & Oranges
+select sale_date,sum(case when fruit='apples' then sold_num else -sold_num end) as diff
+from Sales
+group by sale_date
+order by sale_date

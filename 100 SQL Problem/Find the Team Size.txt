@@ -1,0 +1,8 @@
+-- https://www.naukri.com/code360/problems/find-the-team-size_2117109?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=2
+-- Find the Team Size
+select e1.employee_id,count(e1.employee_id) as team_size  from 
+Employee e1
+join Employee e2
+on e1.team_id=e2.team_id
+group by e1.employee_id
+order by e1.employee_id

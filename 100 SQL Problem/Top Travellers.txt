@@ -1,0 +1,9 @@
+-- https://www.naukri.com/code360/problems/top-travellers_2117112?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=2
+-- Top Travellers
+SELECT 
+    name,
+    COALESCE(SUM(distance), 0) as travelled_distance 
+FROM Users
+LEFT JOIN Rides ON Users.id = Rides.user_id
+GROUP BY name
+ORDER BY travelled_distance DESC, name ASC;
