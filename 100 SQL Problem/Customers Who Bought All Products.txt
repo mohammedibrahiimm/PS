@@ -1,0 +1,7 @@
+-- https://www.naukri.com/code360/problems/customers-who-bought-all-products_2121435?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=2
+-- Customers Who Bought All Products
+select customer_id from Customer c
+join Product p
+on c.product_key = p.product_key
+group by customer_id
+having count(distinct c.product_key)=(select count(*) as lol from Product)

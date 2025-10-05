@@ -1,0 +1,7 @@
+-- https://www.naukri.com/code360/problems/npv-queries_2181286?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=2
+-- NPV Queries
+select distinct q.id,q.year,COALESCE(NPV.npv,0) as npv
+from Queries q
+left join NPV 
+on NPV.id=q.id and NPV.year=q.year
+order by q.id

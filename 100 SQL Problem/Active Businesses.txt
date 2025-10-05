@@ -1,0 +1,12 @@
+-- https://www.naukri.com/code360/problems/active-businesses_2122056?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=3
+-- Active Businesses
+with tmp as(
+    select event_type,avg(occurences*1.0) from Events
+    group by event_type
+)
+
+select business_id
+from Events e 
+join tmp on e.occurences>tmp.avg and e.event_type=tmp.event_type
+group by e.business_id 
+having count(business_id)>1

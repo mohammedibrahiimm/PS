@@ -1,0 +1,17 @@
+-- https://www.naukri.com/code360/problems/create-a-session-bar-chart_2117111?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=3
+-- Create a Session Bar Chart
+select '[0-5>' as bin,count(duration) as total 
+from Sessions
+where duration<300
+union 
+select '[5-10>' as bin,count(duration) as total 
+from Sessions
+where duration between 300 and 599
+union
+select '[10-15>' as bin,count(duration) as total 
+from Sessions
+where duration between 600 and 899
+union
+select '15 or more' as bin,count(duration) as total 
+from Sessions
+where duration >= 900
