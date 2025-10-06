@@ -1,0 +1,9 @@
+-- https://www.naukri.com/code360/problems/spotify-sessions_2246918?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=5
+-- Spotify Sessions
+select session_id from Playback
+where session_id not in(
+select session_id
+from Playback p
+join Ads a 
+on p.customer_id=a.customer_id and p.start_time<=a.timestamp and p.end_time>=a.timestamp
+)

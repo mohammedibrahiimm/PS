@@ -1,0 +1,10 @@
+-- https://www.naukri.com/code360/problems/group-employees-of-the-same-salary_2188777?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=4
+-- Group Employees of the Same Salary
+select employee_id,name,salary,DENSE_RANK() OVER (order BY salary) AS team_id
+from Employees 
+where salary in(
+    select salary
+    from Employees
+    group by salary
+    having count(*)>1
+)

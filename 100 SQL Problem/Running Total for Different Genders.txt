@@ -1,0 +1,4 @@
+-- https://www.naukri.com/code360/problems/running-total-for-different-genders_2188769?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=4
+-- Running Total for Different Genders
+select gender,day,sum(score_points) OVER (partition by gender ORDER BY day) AS total 
+from Scores 

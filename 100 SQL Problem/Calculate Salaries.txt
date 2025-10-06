@@ -1,0 +1,15 @@
+-- https://www.naukri.com/code360/problems/calculate-salaries_2122062?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=2
+-- Calculate Salaries
+with tmp as (
+    select company_id,salary,ROW_NUMBER() OVER (PARTITION BY company_id ORDER BY salary desc) AS row_number 
+    from Salaries
+)
+
+select s.company_id,employee_id,employee_name,(
+    case when tmp.salary>10000 then round(s.salary-(s.salary*(49.0/100)))
+    when tmp.salary>=1000 then round(s.salary-(s.salary*(24.0/100)))
+    else s.salary end
+    )
+from Salaries s
+join tmp
+on s.company_id=tmp.company_id and row_number=1

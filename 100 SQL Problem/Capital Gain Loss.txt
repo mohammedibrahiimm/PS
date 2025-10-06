@@ -1,0 +1,5 @@
+-- https://www.naukri.com/code360/problems/capital-gainloss_2122059?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=3
+-- Capital Gain Loss
+select stock_name,sum(case when operation='Buy' then -price else price end) as capital_gain_loss
+from Stocks
+group by stock_name
