@@ -1,0 +1,12 @@
+-- http://naukri.com/code360/problems/orders-with-maximum-quantity-above-average_2188776?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=1
+-- Orders With Maximum Quantity Above Average
+select order_id
+from OrdersDetails
+group by order_id
+having max(quantity) > (
+    select avg(quantity) as av 
+    from OrdersDetails
+    group by order_id
+    order by av desc 
+    limit 1
+)

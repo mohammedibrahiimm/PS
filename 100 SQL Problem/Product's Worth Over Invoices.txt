@@ -1,0 +1,6 @@
+-- https://www.naukri.com/code360/problems/product-s-worth-over-invoices_2188792?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=2
+-- Product's Worth Over Invoices
+select name,sum(rest) as rest,sum(paid) as paid,sum(canceled) as canceled,sum(refunded) as refunded
+from Product 
+join Invoice on Invoice.product_id=Product.product_id
+group by name
