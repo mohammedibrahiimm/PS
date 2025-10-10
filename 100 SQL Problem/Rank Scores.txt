@@ -1,0 +1,6 @@
+-- https://www.naukri.com/code360/problems/rank-scores_2117771?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=2
+-- Rank Scores
+SELECT score,
+       DENSE_RANK() OVER (ORDER BY score DESC) AS Rank
+FROM Scores
+ORDER BY score DESC;

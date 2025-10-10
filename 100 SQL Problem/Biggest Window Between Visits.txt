@@ -1,0 +1,17 @@
+-- https://www.naukri.com/code360/problems/biggest-window-between-visits_2181136?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard&page=2
+-- Biggest Window Between Visits
+
+with tmp as (select *,row_number() over(partition by user_id order by visit_date) as row_number 
+from UserVisits
+),ans as (select t1.user_id,max(t2.visit_date-t1.visit_date) as biggest_window from tmp t1
+join tmp t2
+on t1.user_id=t2.user_id and t1.row_number+1=t2.row_number
+group by t1.user_id
+union 
+select user_id,'2021-1-1'-max(visit_date)
+from tmp
+group by user_id
+having count(user_id)=1)
+
+select * from ans
+order by user_id

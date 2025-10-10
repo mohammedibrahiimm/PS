@@ -1,0 +1,12 @@
+-- https://www.naukri.com/code360/problems/get-the-second-most-recent-activity_2196170?leftPanelTabValue=PROBLEM 
+-- Get the Second Most Recent Activity
+
+with ans as (select *,row_number() over(partition by username order by startDate)
+from UserActivity),
+ans1 as(select username from ans group by username having count(*)=1)
+
+select username,activity,startDate,endDate from ans
+where row_number=2
+union 
+select * from UserActivity
+where username in(select * from ans1)

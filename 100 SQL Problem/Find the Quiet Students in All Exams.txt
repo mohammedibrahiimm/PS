@@ -1,0 +1,18 @@
+-- https://www.naukri.com/code360/problems/find-the-quiet-students-in-all-exams_2196172?topList=top-100-sql-problems&problemListRedirection=true&leftPanelTabValue=PROBLEM&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&customSource=studio_nav&difficulty%5B%5D=Easy&difficulty%5B%5D=Medium&difficulty%5B%5D=Hard
+-- Find the Quiet Students in All Exams
+
+with lol as (select max(score),min(score),exam_id
+from Student s
+join Exam e 
+on s.student_id = e.student_id 
+group by exam_id
+)
+select distinct st.student_id,st.student_name from Student st
+join Exam on st.student_id=Exam.student_id
+where st.student_id not in(
+    select student_id 
+    from Exam e join lol
+    on lol.exam_id=e.exam_id and (score=max or score=min)
+    group by student_id
+)
+order by st.student_id

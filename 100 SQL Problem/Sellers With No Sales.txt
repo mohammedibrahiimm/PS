@@ -1,0 +1,10 @@
+-- https://www.naukri.com/code360/problems/sellers-with-no-sales_2188790?topList=top-100-sql-problems&problemListRedirection=true&count=25&page=3&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&leftPanelTabValue=PROBLEM&customSource=studio_nav
+-- Sellers With No Sales
+
+select seller_name from Seller
+where seller_id not in (
+    select distinct seller.seller_id
+    from orders 
+    join Seller on Seller.seller_id=orders.seller_id
+    where DATE_PART('year',sale_date)='2020'
+)
