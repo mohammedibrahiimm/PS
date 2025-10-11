@@ -1,0 +1,18 @@
+-- https://www.naukri.com/code360/problems/league-statistics_2181143?topList=top-100-sql-problems&problemListRedirection=true&count=25&page=1&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&leftPanelTabValue=PROBLEM&customSource=studio_nav
+-- Premier League Stats
+
+select team_name,count(*) as matches_played,
+sum(case 
+    when t.team_id=m.home_team_id and home_team_goals>away_team_goals then 3 
+    when t.team_id=m.away_team_id and away_team_goals>home_team_goals then 3
+    when home_team_goals=away_team_goals then 1
+    else 0 end
+) as points,
+sum(case when t.team_id=m.home_team_id then home_team_goals else away_team_goals end) as goal_for,
+sum(case when t.team_id=m.home_team_id then away_team_goals else home_team_goals end) as goal_against,
+sum(case when t.team_id=m.home_team_id then home_team_goals else away_team_goals end)-sum(case when t.team_id=m.home_team_id then away_team_goals else home_team_goals end) as goal_diff 
+from Teams t 
+join Matches m 
+on (t.team_id = m.home_team_id or t.team_id=m.away_team_id)
+group by team_name
+order by points desc,goal_diff desc,team_name

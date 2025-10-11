@@ -1,0 +1,9 @@
+-- https://www.naukri.com/code360/problems/find-the-missing-ids_2181134?topList=top-100-sql-problems&problemListRedirection=true&count=25&page=1&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&leftPanelTabValue=PROBLEM&customSource=studio_nav
+-- Find the Missing IDs
+with tmp as (
+    select *,row_number() over(order by customer_id) as rn from Customers
+)
+
+
+select rn as ids from tmp 
+where customer_id!=rn

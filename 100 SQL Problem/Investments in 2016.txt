@@ -1,0 +1,19 @@
+-- https://www.naukri.com/code360/problems/investments-in-2016_2119333?topList=top-100-sql-problems&problemListRedirection=true&count=25&page=1&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&leftPanelTabValue=PROBLEM&customSource=studio_nav
+-- Investments in 2016
+
+with tmp as (
+    select tiv_2015,count(*) as cnt
+    from insurance 
+    group by tiv_2015 
+    having count(*)>1
+),tmp1 as (
+    select lat,lon,count(*)
+    from insurance
+    group by lat,lon
+    having count(*)=1
+)
+select sum(tiv_2016) as TIV_2016
+from insurance i
+join tmp on i.tiv_2015=tmp.tiv_2015
+join tmp1 on i.lat=tmp1.lat and i.lon=tmp1.lon
+group by i.tiv_2015

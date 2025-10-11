@@ -1,0 +1,12 @@
+-- https://www.naukri.com/code360/problems/managers-with-at-least-5-direct-reports_2119330?topList=top-100-sql-problems&problemListRedirection=true&count=25&page=1&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&leftPanelTabValue=PROBLEM&customSource=studio_nav
+-- Managers with at Least 5 Direct Reports
+
+with tmp as (
+    select ManagerId
+    from Employee 
+    group by ManagerId
+    having count(ManagerId)>4
+)
+select name
+from Employee
+where id in(select * from tmp)

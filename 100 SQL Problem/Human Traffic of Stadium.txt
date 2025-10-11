@@ -1,0 +1,16 @@
+-- https://www.naukri.com/code360/problems/human-traffic-of-stadium_2181183?topList=top-100-sql-problems&problemListRedirection=true&count=25&page=1&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&leftPanelTabValue=PROBLEM&customSource=studio_nav
+-- Human Traffic of Stadium
+with tmp as (
+    select distinct s1.id
+    from Stadium s1
+    join Stadium s2
+    on s1.id+1=s2.id and s1.people>=100 and s2.people>=100
+    join Stadium s3
+    on s2.id+1=s3.id and s2.people>=100 and s3.people>=100
+)
+
+select * from Stadium
+where id in(select * from tmp) 
+or id-1 in(select * from tmp) 
+or id-2 in(select * from tmp)
+order by visit_date
