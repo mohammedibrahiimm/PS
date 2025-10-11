@@ -1,0 +1,21 @@
+-- https://www.naukri.com/code360/problems/suspicious-bank-accounts_2188775?topList=top-100-sql-problems&problemListRedirection=true&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&leftPanelTabValue=PROBLEM&customSource=studio_nav
+-- Suspicious Bank Accounts
+
+with tmp as (
+    SELECT distinct t1.account_id,sum(t2.amount),DATE_PART('month', t1.day)
+    from Transactions t1
+    join Transactions t2
+    ON DATE_PART('year', t1.day) = DATE_PART('year', t2.day)
+    and DATE_PART('month', t1.day)=DATE_PART('month', t2.day)
+    AND t1.account_id = t2.account_id
+    AND t1.type_pro = 'Creditor'
+    AND t2.type_pro = 'Creditor'
+    group by t1.transaction_id,t1.account_id,DATE_PART('month', t1.day)
+)
+
+select distinct t.account_id
+from tmp t
+join tmp t1
+on t.account_id=t1.account_id and t1.DATE_PART-t.DATE_PART=1 
+join Accounts a
+on t.account_id=a.account_id and t.sum>a.max_income and t1.sum>a.max_income

@@ -1,0 +1,8 @@
+-- https://www.naukri.com/code360/problems/rectangles-area_2122061?topList=top-100-sql-problems&problemListRedirection=true&count=25&page=2&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&leftPanelTabValue=PROBLEM&customSource=studio_nav
+-- Rectangles Area
+
+select distinct least(p1.id,p.id) as p1,greatest(p1.id,p.id) as p2,abs(p1.x_value-p.x_value)*abs(p1.y_value-p.y_value) as area
+from Points p 
+join Points p1
+on p1.id != p.id
+where abs(p1.x_value-p.x_value)*abs(p1.y_value-p.y_value) != 0

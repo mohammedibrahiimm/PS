@@ -1,0 +1,11 @@
+-- https://www.naukri.com/code360/problems/department-highest-salary_2119329?topList=top-100-sql-problems&problemListRedirection=true&count=25&page=1&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&leftPanelTabValue=PROBLEM&customSource=studio_nav
+-- Department Highest Salary
+
+with cte as (
+select *, dense_rank() over(partition by departmentid order by salary desc) as rn from Employee
+)
+select B.name as "Department",A.name as "Employee",A.salary as "salary" 
+from cte as A inner join Department as B
+on A.departmentid=B.id
+where rn=1
+order by A.salary desc,A.Name desc
