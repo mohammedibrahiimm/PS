@@ -1,0 +1,34 @@
+-- https://www.naukri.com/code360/problems/countries-you-can-safely-invest-in_2188774?topList=top-100-sql-problems&problemListRedirection=true&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&leftPanelTabValue=PROBLEM&customSource=studio_nav&page=2
+-- Countries You Can Safely Invest In
+with tmp as (
+    select p1.id as id1,p1.name as name1,p1.phone_number as phone_number1,
+    p2.id as id2,p2.name as name2,p2.phone_number as phone_number2,duration
+    from person p1
+    join person p2
+    on p1.id != p2.id
+    join Calls
+    on (p1.id = caller_id and p2.id = callee_id)
+),tmp1 as(
+    select name,sum(duration),count(*)
+    from tmp
+    join Country c
+    on (c.country_code=substring(phone_number1,1,3) or c.country_code=substring(phone_number2,1,3))
+    group by name
+),tmp2 as(
+    select name,sum(duration),count(*)
+    from tmp
+    join Country c
+    on (c.country_code=substring(phone_number1,1,3) and c.country_code=substring(phone_number2,1,3))
+    group by name
+),tmp3 as (
+    select tmp1.name as country,(tmp1.sum+tmp2.sum) as tot,(tmp1.count+tmp2.count) as tot1
+    from tmp1
+    join tmp2
+    on tmp1.name=tmp2.name
+),bdan as(
+select sum(tot)/sum(tot1) as lmao
+from tmp3
+)
+    select country
+    from tmp3
+    where tot*1.0/tot1>(select * from bdan)
