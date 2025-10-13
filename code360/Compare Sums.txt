@@ -1,0 +1,17 @@
+// https://www.naukri.com/code360/problems/compare-sums_11431921?topic=null&count=25&page=1&search=&sort_entity=order&sort_order=ASC&leftPanelTabValue=PROBLEM
+// Compare Sums
+int findTheLarger(int n, vector<int> &v) {
+    int mx=0;
+    int left=0,right=0;
+    for(int i=0;i<n;i++){
+        mx=max(mx,v[i]);
+        if(v[i]==mx){left+=v[i];}
+        else
+            left-=v[i];
+    }
+    left-=mx;
+    if(left!=0){
+        return (0>left);
+    }
+    return -1;
+}

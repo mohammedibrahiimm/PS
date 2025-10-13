@@ -1,0 +1,9 @@
+// http://naukri.com/code360/problems/arrange-the-numbers_11197578?topic=null&count=25&page=1&search=&sort_entity=order&sort_order=ASC&leftPanelTabValue=PROBLEM
+// Arrange the numbers
+int maximumSubarraySum(int n, vector<int> &v) {
+    int ans=0;
+    for(int i=0;i<n;i++){
+        ans+=(v[i]>=0?v[i]:0);
+    }
+    return ans;
+}

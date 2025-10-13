@@ -1,0 +1,17 @@
+// https://www.naukri.com/code360/problems/hate-equality_11334976?topic=null&count=25&page=1&search=&sort_entity=order&sort_order=ASC&leftPanelTabValue=PROBLEM
+// Hate Equality
+#include <bits/stdc++.h>
+int canYouMakeDifference(int n, string &s) {
+    vector<int>v(26,0);
+    int all=n;
+    for(int i=0;i<n;i++){
+        v[s[i]-'a']++;
+    }
+    for(int i=0;i<n;i++){
+        bool ok=0;
+        if(all-v[s[i]-'a']==0){
+            return 0;
+        }
+    }
+    return 1;
+}
