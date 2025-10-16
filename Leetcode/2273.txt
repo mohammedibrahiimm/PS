@@ -1,0 +1,19 @@
+// https://leetcode.com/problems/find-resultant-array-after-removing-anagrams/?envType=daily-question&envId=2025-10-13
+// 2273. Find Resultant Array After Removing Anagrams
+class Solution {
+public:
+    vector<string> removeAnagrams(vector<string>& words) {
+        vector<string>ans;
+        ans.push_back(words[0]);
+        for(int i=1;i<words.size();i++){
+            auto tmp=ans.back();
+            sort(tmp.begin(),tmp.end());
+            auto tmp1=words[i];
+            sort(tmp1.begin(),tmp1.end());
+            if(tmp!=tmp1){
+                ans.push_back(words[i]);
+            }
+        }
+        return ans;
+    }
+};

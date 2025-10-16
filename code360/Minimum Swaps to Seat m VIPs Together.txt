@@ -1,0 +1,37 @@
+// https://www.naukri.com/code360/contests/beginner-contest-96/20632925/problems/42550?leftPanelTabValue=PROBLEM&customSource=studio_nav
+// Minimum Swaps to Seat m VIPs Together
+#include <bits/stdc++.h>
+using namespace std;
+
+int minSwapsToGroupMOnes(const vector<int>& nums, int m) {
+    int cnt=0;
+    for(auto&it:nums){cnt+=it;}
+    if(cnt<m){return -1;}
+    int l=0,ans=INT_MAX;
+    cnt=0;
+    for(int i=0;i<nums.size();i++){
+        cnt+=nums[i];
+        if(i-l<m){
+            if(cnt>=m){return 0;}
+            ans=min(ans,m-cnt);
+        }
+        else{
+            cnt-=nums[l++];
+            if(cnt>=m){return 0;}
+            ans=min(ans,m-cnt);
+        }
+    }
+    l=0;
+    int r=m;
+    while(r){
+        cnt=0;
+        for(int i=0;i<l;i++){cnt+=nums[i];}
+        for(int i=nums.size()-1;i>=nums.size()-r;i--){cnt+=nums[i];}
+        if(cnt>=m){return 0;}
+        ans=min(ans,m-cnt);
+        l++;
+        r--;
+    }
+    return ans;
+}
+

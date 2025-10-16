@@ -1,0 +1,15 @@
+// https://www.naukri.com/code360/problems/hacker_11490201?topic=null&count=25&page=1&search=&sort_entity=order&sort_order=ASC&leftPanelTabValue=PROBLEM
+// Hacker
+string hack(string &n){
+   vector<int>v(10,0);
+   for(int i=0;i<n.size();i++){
+      v[n[i]-'0']++;
+   }
+   string ans="";
+   for(int i=9;i>=0;i--){
+      while(v[i]--){
+         ans+=to_string(i);
+      }
+   }
+   return ans;
+}
