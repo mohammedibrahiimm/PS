@@ -1,0 +1,14 @@
+-- https://www.naukri.com/code360/problems/find-cumulative-salary-of-an-employee_2196176?topList=top-100-sql-problems&problemListRedirection=true&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&leftPanelTabValue=PROBLEM&customSource=studio_nav&page=1
+-- Find Cumulative Salary of an Employee
+select e1.id,e1.month,coalesce(e1.salary,0)+coalesce(e2.salary,0)+coalesce(e3.salary,0) as salary
+from Employee e1
+left join Employee e2 
+on e1.id=e2.id and e1.month-1=e2.month 
+left join Employee e3 
+on e3.id=e2.id and e2.month-1=e3.month
+where (e1.id,e1.month) not in(
+    select id,max(month)
+    from Employee
+    group by id
+)
+order by e1.id asc,e1.month desc

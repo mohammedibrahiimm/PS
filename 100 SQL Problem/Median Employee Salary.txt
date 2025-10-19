@@ -1,0 +1,29 @@
+-- https://www.naukri.com/code360/problems/median-employee-salary_2196167?topList=top-100-sql-problems&problemListRedirection=true&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&leftPanelTabValue=PROBLEM&customSource=studio_nav
+-- Median Employee Salary
+with tmp as(
+    select *,row_number() over(partition by company order by salary) as row
+    from employee
+)
+,tmp1 as(
+    select company,max(row)
+    from tmp
+    group by company 
+    having max(row)%2=0
+),tmp2 as(
+    select company,max(row)
+    from tmp
+    group by company 
+    having max(row)%2=1
+),ans as(
+select id,company,salary
+from tmp
+where (company,row) in(select company,max/2 from tmp1) or (company,row-1) in(select company,max/2 from tmp1)
+union 
+select id,company,salary
+from tmp
+where (company,row) in(select company,(max+1)/2 from tmp2)
+)
+
+select * 
+from ans
+order by company,salary

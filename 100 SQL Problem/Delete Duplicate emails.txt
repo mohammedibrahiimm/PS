@@ -1,0 +1,21 @@
+-- https://www.naukri.com/code360/problems/delete-duplicate-emails_2111947?topList=top-100-sql-problems&problemListRedirection=true&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&leftPanelTabValue=PROBLEM&customSource=studio_nav&page=1
+-- Delete Duplicate emails
+with tmp as (
+    select email,min(id) as id
+    from Person
+    group by email
+    having count(*)>1
+),tmp1 as(
+    select p.*
+    from Person p
+    join tmp
+    on tmp.email=p.email and tmp.id != p.id
+)
+
+DELETE FROM Person
+WHERE (id, email) IN (
+    SELECT id, email
+    FROM tmp1
+);
+
+select * from Person
