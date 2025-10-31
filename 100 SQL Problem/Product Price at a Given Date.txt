@@ -1,0 +1,19 @@
+-- https://www.naukri.com/code360/problems/product-price-at-a-given-date_2122057?topList=top-100-sql-problems&problemListRedirection=true&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&leftPanelTabValue=PROBLEM&customSource=studio_nav&page=1
+-- Product Price at a Given Date
+select product_id,new_price as price from Products
+where (product_id,change_date) in (
+    select product_id,max(change_date)
+    from Products
+    where change_date<='2019-08-16'
+    group by product_id
+)
+
+union 
+
+select product_id,10 from Products
+where product_id in (
+    select product_id
+    from Products
+    group by product_id
+    having min(change_date)>'2019-08-16'
+)

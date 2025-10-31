@@ -1,0 +1,24 @@
+-- https://www.naukri.com/code360/problems/the-most-frequently-ordered-products-for-each-customer_2122064?topList=top-100-sql-problems&problemListRedirection=true&count=25&search=&sort_entity=order&sort_order=ASC&attempt_status=NOT_ATTEMPTED&leftPanelTabValue=PROBLEM&customSource=studio_nav&page=2
+-- The Most Frequently Ordered Products for Each Customer
+with tmp as(
+    select customer_id,count(o.product_id) as num,o.product_id
+    from Orders o
+    join Products p 
+    on o.product_id = p.product_id 
+    group by customer_id,o.product_id
+),tmp1 as(
+    select *,dense_rank() over(partition by customer_id order by num desc) as dr
+    from tmp
+)
+select distinct c.customer_id,p.product_id,p.product_name
+from Customers c
+join Orders o 
+on o.customer_id=c.customer_id
+join Products p 
+on p.product_id=o.product_id
+where (c.customer_id,p.product_id) in(
+    select customer_id,product_id
+    from tmp1
+    where dr=1
+)
+order by customer_id

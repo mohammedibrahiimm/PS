@@ -1,0 +1,21 @@
+// https://www.naukri.com/code360/problems/longest-consecutive-sequence_759408?topList=zero-to-one-sde-sheet&problemListRedirection=true&leftPanelTabValue=PROBLEM
+// Longest Consecutive Sequence
+#include <bits/stdc++.h>
+int lengthOfLongestConsecutiveSequence(vector<int> &v, int n) {
+    map<int,bool>mp;
+    sort(v.begin(),v.end());
+    int cnt=1,mn=v[0];
+    int mx=0;
+    for(int i=0;i<n;i++){
+        if(abs(v[i]-mn)<=1){
+            if(v[i]-1==mn){cnt++;}
+        }
+        else{
+            mx=max(mx,cnt);
+            cnt=1;
+        }
+        mn=v[i];
+    }
+    mx=max(mx,cnt);
+    return mx;
+}
